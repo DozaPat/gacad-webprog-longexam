@@ -1,5 +1,5 @@
 import Button from '../../components/Button';
-import logo from '../../assets/img/nubdexchange_logo.png';
+import logo from '../../assets/img/nice.png';
 
 const AboutPage = () => {
   return (

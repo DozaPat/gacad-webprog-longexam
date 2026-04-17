@@ -1,3 +1,11 @@
+import totebag from './img/totebag.png';
+import Stationery from './img/mercha.jpg';
+import tumbler from './img/tumbler.jpg';
+import lamp from './img/lamp.png';
+import hoodie from './img/apparel.jpg';
+import organizer from './img/desk_organizer.jpg';
+import lanyard from './img/lanyard.jpg';
+import carepack from './img/carepack.png'; 
 const products = [
   {
     name: 'campus-tote-bag',
@@ -5,6 +13,7 @@ const products = [
     category: 'Bags',
     price: 'PHP 499',
     stock: 'In stock',
+    image: totebag,
     content: [
       'A roomy everyday tote for books, gym clothes, chargers, and quick campus errands.',
       'Made with thick canvas, reinforced handles, and a clean monochrome print.',
@@ -17,6 +26,7 @@ const products = [
     category: 'Stationery',
     price: 'PHP 249',
     stock: 'In stock',
+    image: Stationery,
     content: [
       'A practical bundle of notebooks, sticky notes, and quick-label tabs for daily class work.',
       'The set is light, compact, and easy to keep inside a backpack or locker.',
@@ -29,6 +39,7 @@ const products = [
     category: 'Drinkware',
     price: 'PHP 599',
     stock: 'Low stock',
+    image: tumbler,
     content: [
       'A double-wall tumbler built for water, coffee, or tea during long school days.',
       'The matte finish keeps the look simple while the lid helps reduce spills in your bag.',
@@ -41,6 +52,7 @@ const products = [
     category: 'Tech',
     price: 'PHP 899',
     stock: 'In stock',
+    image: lamp,
     content: [
       'A compact rechargeable lamp for dorm desks, night study sessions, and small workspaces.',
       'It has three brightness levels and a foldable body that stores neatly after use.',
@@ -53,6 +65,7 @@ const products = [
     category: 'Apparel',
     price: 'PHP 1,199',
     stock: 'Preorder',
+    image: hoodie,
     content: [
       'A soft everyday hoodie with a relaxed fit for classrooms, commute days, and weekends.',
       'The heavy cotton blend keeps structure while staying comfortable for regular wear.',
@@ -65,6 +78,7 @@ const products = [
     category: 'Workspace',
     price: 'PHP 349',
     stock: 'In stock',
+    image: organizer,
     content: [
       'A small organizer set for pens, clips, cables, cards, and other desk essentials.',
       'The modular pieces can be arranged based on your study area or dorm table.',
@@ -77,6 +91,7 @@ const products = [
     category: 'Accessories',
     price: 'PHP 179',
     stock: 'In stock',
+    image: lanyard, 
     content: [
       'A durable lanyard and card holder set for IDs, access cards, and small passes.',
       'The clip is easy to detach when scanning or presenting credentials.',
@@ -89,6 +104,7 @@ const products = [
     category: 'Bundles',
     price: 'PHP 399',
     stock: 'In stock',
+    image: carepack,
     content: [
       'A compact bundle with snacks, tabs, pens, and quick notes for busy review weeks.',
       'Packed for convenience so students can grab one kit and focus on studying.',
