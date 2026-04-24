@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../assets/img/nice.png';
 
 const links = [
@@ -16,24 +16,34 @@ const navLinkClassName = ({ isActive }) =>
   ].join(' ');
 
 const NavBar = () => {
+  const navigate = useNavigate();
+
+// NavBar.jsx snippet
+const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn'); // Remove the session
+    navigate('/auth/signin'); // Redirect to login
+};
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#002147]/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         
         {/* Logo + Title */}
-        <NavLink to="/" className="flex items-center gap-3">
-          <img
-            src={logo}
-            alt="BulldogEx"
-            className="h-10 w-10 rounded-full border border-white/20 bg-white object-contain p-1"
-          />
-          <p className="text-lg font-bold text-white tracking-wide">
+        <NavLink to="/" className="flex items-center gap-3 shrink-0">
+          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white p-1">
+            <img
+              src={logo}
+              alt="BulldogEx"
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <p className="text-lg font-bold tracking-wide text-white">
             NU Bulldogs Exchange
           </p>
         </NavLink>
 
-        {/* Navigation */}
-        <nav className="hidden items-center gap-3 md:flex">
+        {/* Navigation + Logout */}
+        <nav className="hidden items-center gap-2 md:flex">
           {links.map((link) => (
             <NavLink
               key={link.to}
@@ -44,6 +54,17 @@ const NavBar = () => {
               {link.label}
             </NavLink>
           ))}
+
+          {/* Vertical Divider */}
+          <div className="mx-1 h-4 w-[1px] bg-white/20" />
+
+          <button
+            onClick={handleLogout}
+            className="rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-red-500/20 hover:text-red-400"
+          >
+            Logout
+          </button>
+          
         </nav>
 
       </div>

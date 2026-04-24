@@ -1,18 +1,39 @@
 import { Outlet } from 'react-router-dom';
 
+import loginHero from '../assets/img/merch.jpg'; 
+
 const AuthLayout = () => {
   return (
-    <section className="min-h-screen bg-zinc-100 text-zinc-900">
+    <section className="min-h-screen bg-[#002147] text-zinc-900">
       <div className="grid min-h-screen w-full lg:grid-cols-[1fr_0.95fr]">
-        <div className="flex items-center justify-center border-b-2 border-zinc-300 bg-zinc-200 p-8 sm:p-10 lg:border-b-0 lg:border-r-2 lg:border-zinc-300 lg:p-16">
-          <div className="flex w-full max-w-md items-center justify-center rounded-4xl border-2 border-dashed border-zinc-300 bg-zinc-100/60 p-8 sm:p-10">
-            <div className="relative aspect-square w-full max-w-[18rem] border-10 border-zinc-50/90">
-              <span className="absolute left-1/2 top-0 h-full w-2 -translate-x-1/2 rotate-45 bg-zinc-50/90" />
-              <span className="absolute left-1/2 top-0 h-full w-2 -translate-x-1/2 -rotate-45 bg-zinc-50/90" />
-            </div>
-          </div>
-        </div>
+        
+        {/* LEFT SIDE: IMAGE CONTAINER */}
+        {/* LEFT SIDE: IMAGE CONTAINER */}
+<div className="relative hidden items-center justify-center bg-black lg:flex"> 
+  {/* THE ACTUAL IMAGE - Lower opacity = Darker image */}
+  <img 
+    src={loginHero} 
+    alt="NU Bulldogs" 
+    className="absolute inset-0 h-full w-full object-cover opacity-40 transition-opacity duration-500"
+  />
+  
+  {/* OPTIONAL: Extra Gradient Overlay for maximum readability at the bottom */}
+  <div className="absolute inset-0 bg-gradient-to-t from-[#002147] via-transparent to-black/40" />
+  
+  {/* BRAND OVERLAY CONTAINER */}
+  <div className="relative z-10 flex w-full max-w-md flex-col items-start p-12">
+    <div className="h-1.5 w-20 bg-[#FFD100] mb-4 shadow-lg" />
+    <h2 className="text-5xl font-bold text-white leading-tight drop-shadow-2xl">
+      Wear Your <br /> 
+      <span className="text-[#FFD100]">School Pride.</span>
+    </h2>
+    <p className="mt-4 text-blue-50 font-medium text-lg drop-shadow-md">
+      Official merchandise of the National University Bulldogs.
+    </p>
+  </div>
+</div>
 
+        {/* RIGHT SIDE: THE FORM (SignIn/SignUp) */}
         <main className="flex items-center bg-zinc-50 px-6 py-10 sm:px-10 lg:px-16">
           <div className="mx-auto w-full max-w-md">
             <Outlet />

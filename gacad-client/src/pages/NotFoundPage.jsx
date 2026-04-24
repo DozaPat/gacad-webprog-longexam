@@ -1,50 +1,24 @@
-import Button from '../components/Button';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const NotFoundPage = () => {
-  return (
-    <div className="flex w-full flex-col gap-6">
-      <section className="border-y-2 border-zinc-900 bg-zinc-50 px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-zinc-500">
-            Error
-          </p>
-          <h1 className="text-6xl font-bold leading-tight text-zinc-900 sm:text-7xl">
-            404
-          </h1>
-          <p className="mt-4 text-lg leading-7 text-zinc-600">
-            Page not found. The page you're looking for doesn't exist or has been moved.
-          </p>
-          <div className="mt-6 flex gap-3">
-            <Button to="/">Back Home</Button>
-            <Button to="/products">View Products</Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y-2 border-zinc-900 bg-zinc-50 px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-zinc-500">
-            Quick Links
-          </p>
-          <h2 className="mt-2 text-2xl font-semibold text-zinc-900">Explore the site</h2>
-          
-          <div className="mt-6 space-y-3">
-            <div className="rounded-3xl border-2 border-zinc-900 bg-zinc-100 p-4">
-              <h3 className="font-semibold text-zinc-900">Home</h3>
-              <p className="mt-1 text-sm text-zinc-600">Return to the homepage</p>
-              <Button to="/" className="mt-3">Go Home</Button>
+function NotFoundPage() {
+    return (
+        <div className="min-h-screen flex items-center justify-center px-4">
+            <div className="text-center">
+                <div className="mb-8">
+                    <h1 className="text-9xl font-bold text-zinc-300 mb-4">404</h1>
+                    <h2 className="text-4xl font-bold text-zinc-900 mb-4">Page Not Found</h2>
+                    <p className="text-lg text-zinc-600 mb-8">The page you're looking for doesn't exist or may have been moved.</p>
+                </div>
+                <Link 
+                    to="/" 
+                    className="inline-block bg-zinc-900 text-white px-8 py-3 rounded-lg hover:bg-zinc-800 transition-colors font-semibold"
+                >
+                    Go Back Home
+                </Link>
             </div>
-            
-            <div className="rounded-3xl border-2 border-zinc-900 bg-zinc-100 p-4">
-              <h3 className="font-semibold text-zinc-900">Products</h3>
-              <p className="mt-1 text-sm text-zinc-600">Browse all featured store items</p>
-              <Button to="/products" className="mt-3">View Products</Button>
-            </div>
-          </div>
         </div>
-      </section>
-    </div>
-  )
+    );
 }
 
-export default NotFoundPage
+export default NotFoundPage;

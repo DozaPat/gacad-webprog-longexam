@@ -1,97 +1,83 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 
 const inputClasses =
-  'mt-2 w-full rounded-xl border border-zinc-300 bg-zinc-100 px-4 py-3 text-sm text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-zinc-900 focus:bg-zinc-50';
+  'mt-2 w-full rounded-xl border border-[#002147]/20 bg-white px-4 py-3 text-sm text-[#002147] outline-none transition placeholder:text-zinc-400 focus:border-[#FFD100] focus:ring-2 focus:ring-[#FFD100]/20';
 
-const actionButtonClassName = 'w-full rounded-xl py-3 text-[11px] tracking-[0.2em]';
+const actionButtonClassName = 'w-full rounded-xl py-3 text-[11px] font-bold tracking-[0.2em] uppercase';
 
 const SignUpPage = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    
+    // Save to localStorage for the session
+    localStorage.setItem('registeredUser', JSON.stringify({
+        email: formData.email,
+        password: formData.password,
+        name: formData.firstName
+    }));
+
+    alert("Registration successful! Redirecting to login...");
+    navigate('/auth/signin');
+  };
+
   return (
-    <>
-      <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">Sign Up</h1>
+    <div className="w-full max-w-md">
+      <h1 className="text-3xl font-bold tracking-tight text-[#002147] sm:text-4xl">Join the Exchange</h1>
       <p className="mt-3 text-sm leading-6 text-zinc-600">
-        Create a store account for faster checkout, order updates, and pickup details.
+        Create an account for faster checkout and exclusive Bulldog merch updates.
       </p>
 
-      <form className="mt-8 space-y-5">
+      <form className="mt-8 space-y-5" onSubmit={handleSignUp}>
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="first-name" className="text-sm font-medium text-zinc-700">
-              First Name
-            </label>
-            <input
-              id="first-name"
-              type="text"
-              placeholder="First name"
-              autoComplete="given-name"
-              className={inputClasses}
-            />
+            <label htmlFor="firstName" className="text-sm font-semibold text-[#002147]">First Name</label>
+            <input id="firstName" type="text" required placeholder="Juan" className={inputClasses} onChange={handleChange} />
           </div>
           <div>
-            <label htmlFor="last-name" className="text-sm font-medium text-zinc-700">
-              Last Name
-            </label>
-            <input
-              id="last-name"
-              type="text"
-              placeholder="Last name"
-              autoComplete="family-name"
-              className={inputClasses}
-            />
+            <label htmlFor="lastName" className="text-sm font-semibold text-[#002147]">Last Name</label>
+            <input id="lastName" type="text" required placeholder="Dela Cruz" className={inputClasses} onChange={handleChange} />
           </div>
         </div>
 
         <div>
-          <label htmlFor="signup-email" className="text-sm font-medium text-zinc-700">
-            Email
-          </label>
-          <input
-            id="signup-email"
-            type="email"
-            placeholder="student@email.com"
-            autoComplete="email"
-            className={inputClasses}
-          />
+          <label htmlFor="email" className="text-sm font-semibold text-[#002147]">University Email</label>
+          <input id="email" type="email" required placeholder="student@national-u.edu.ph" className={inputClasses} onChange={handleChange} />
         </div>
 
         <div>
-          <label htmlFor="signup-password" className="text-sm font-medium text-zinc-700">
-            Password
-          </label>
-          <input
-            id="signup-password"
-            type="password"
-            placeholder="Password"
-            autoComplete="new-password"
-            className={inputClasses}
-          />
-          <p className="mt-2 text-xs leading-5 text-zinc-500">
-            Use a secure password with letters, numbers, and symbols.
-          </p>
+          <label htmlFor="password" className="text-sm font-semibold text-[#002147]">Password</label>
+          <input id="password" type="password" required placeholder="••••••••" className={inputClasses} onChange={handleChange} />
         </div>
 
-        <Button type="submit" variant="primary" className={actionButtonClassName}>
+        <Button 
+            type="submit" 
+            className={`${actionButtonClassName} bg-[#FFD100] text-[#002147] hover:bg-[#002147] hover:text-white border-2 border-[#FFD100] transition-all`}
+        >
           Create Account
         </Button>
-
-        <div className="grid gap-3 pt-2 sm:grid-cols-2">
-          <Button type="button" variant="secondary" className={actionButtonClassName}>
-            Sign Up with Google
-          </Button>
-          <Button type="button" variant="secondary" className={actionButtonClassName}>
-            Sign Up with Apple
-          </Button>
-        </div>
       </form>
 
       <div className="mt-8 border-t border-zinc-200 pt-6 text-sm text-zinc-600">
         Already have an account?{' '}
-        <Link to="/auth/signin" className="font-semibold text-zinc-900 transition hover:text-zinc-600">
+        <Link to="/auth/signin" className="font-bold text-[#002147] underline decoration-[#FFD100] decoration-2 underline-offset-4 transition hover:text-blue-700">
           Log In
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 
